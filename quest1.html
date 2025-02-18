@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+       $("button").click(function(){
+        var div = $("div.circulo");
+        div.animate(
+            {   
+                width: "150px",
+                height: "150px",
+                marginTop: "100px"
+            },
+            "slow", 
+            function() {  
+                div.css("border", "5px solid black");
+                div.animate(
+                    {
+                        width: "100px",
+                        height: "100px",
+                        marginTop: "50px"
+                    },
+                    "slow", 
+                    function() {
+                        div.css("border", "none");
+                    }
+                );
+            }
+        );
+       });
+    });
+  </script>
+    <style>
+        .circulo {
+            border-radius: 50%;
+            background-color: yellow;
+            width: 100px;
+            height: 100px;
+            margin: 50px auto;
+        }
+        .button {
+            margin-left: 400px;
+            height: 65px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="button">Transformar o Círculo</button>
+    <div class="circulo"></div>
+</body>
+</html>

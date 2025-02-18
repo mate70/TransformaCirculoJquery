@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate Quadrado</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                var div = $("div.quadrado");
+                div.animate(
+                    { 
+                        width: "200px",
+                         left: "100px" 
+                    },
+                    "slow",
+                    function() {  
+                        div.css("background-color", "red");
+                        div.animate(
+                            { 
+                                width: "100px",
+                                left: "0px"
+                            },
+                            "slow",
+                            function() {
+                                div.css("background-color", "blue");
+                            }
+                        );
+                    }
+                );
+            });
+        });
+    </script>
+    <style>
+        .quadrado {
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+            position: relative; /* Necessário para usar 'left' */
+            margin: 50px auto;
+        }
+        .button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: aqua;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="button">Animar Quadrado</button>
+    <div class="quadrado"></div>
+</body>
+</html>
